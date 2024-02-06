@@ -1,0 +1,47 @@
+<!-- {{data}} -->
+
+{% for x in data %}
+  {{x.id}} <br>
+  {{x.true_ansver}} <br>
+
+
+<form action="{{x.random_url}}" method="GET">
+
+<input name="value" value="a" type="radio">
+<input name="value" value="b" type="radio">
+<input name="value" value="c" type="radio">
+<input name="value" value="d" type="radio">
+<input type="submit" value="go">
+
+
+</form>
+
+
+{% endfor %}
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script>
+let b = 0
+
+
+$.ajax({
+  url: 'http://127.0.0.1:8000/',
+  type: "GET",
+  dataType: "json",
+  success: (data) => {
+    console.log(data)
+  },
+  error: (error) => {
+
+  }
+});
+
+
+
+
+</script>
