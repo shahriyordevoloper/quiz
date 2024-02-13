@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>CRMFitness | Asosiy sahifa</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- font-awesome  -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin - v2.4.1
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <script src="assets/js/jquery-3.6.1.min.js"></script>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="load-spinner">
+      <div class="p-1 spinner-grow text-danger" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="p-3 spinner-grow text-warning " role="status">
+        <span class="visually-hidden ">Loading...</span>
+      </div>
+      <div class="p-4 spinner-grow text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">Medical</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+    <div class="container">
+      <div class="row" style="float: right;">
+        <div class="col">
+          <form action="" method="post">
+           
+            <a type="button" class="btn btn-outline-danger" href="#">logout</a>
+            
+        </form>
+        </div>
+      </div>
+    </div>
+
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+  
+
+</ul>
+
+  <style>
+     .msg{
+        position: fixed;
+        top: 80px;
+        right: 0;
+        width: 30%;
+        animation: run 1s linear ;
+        z-index: 100;
+      }
+      @keyframes run {
+      from{ 
+          transform: translateX(500px);   
+      }
+      to{
+          transform: translateX(-8px);   
+      }
+}
+    .nav-item:hover a{
+      transform: scale(1.2);
+    }
+    .nav-item:hover i{
+      margin-left: 20px;
+
+    }
+    .load-spinner{
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;      
+    }
+    
+  </style>
+  
+
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed " href="index.html">
+          <i class="bi bi-grid"></i>
+          <span>Asosiy sahifa </span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="register.html">
+          <i class="bi bi-person-plus-fill"></i>
+          <span>Ro'yhatga Olish </span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#">
+          <i class="bi bi-people-fill"></i>
+          <span>Umumiy Ro'yxat</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="comingtype.html">
+          <i class="bi bi-person-dash"></i>
+          <span>Talvasa xurujli bemorlar</span>
+        </a>
+      </li>
+     
+        
+        </ul>
+      </li><!-- End Forms Nav -->
+
+      <!-- End Tables Nav -->
+
+
+      <!-- End Blank Page Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+
+<link rel="stylesheet" href="assets/example/css_final.css">
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+
+<main id="main" class="main">
+
+
+<div class="pagetitle">
+    <h1>Davomat</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Asosiy sahifa</a></li> 
+        <li class="breadcrumb-item"><a href="#">Umumiy ro'yxat</a></li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+    
+
+    <div class="container mt-5">
+        
+     
+    <div class="row">
+        <div class="col-md-12">
+            <input type="text" name="" class="form-control"  id="search" placeholder=" Search.." style="padding: 5px; width: 100%; ">
+        <table id="emp-table" class="table table-border datab" style="width:100%">
+
+        
+        <thead class="p-4">
+            
+            <th col-index = 1 >Ism Familya</th>
+            <th col-index = 2>
+                <select  class="table-filter  form-select" onchange="filter_rows()">
+                    <option value="all">Barcha tariflar</option>
+                </select>
+            </th>
+
+            <th col-index = 3>
+                <select class="table-filter form-select" onchange="filter_rows()">
+                    <option value="all">Barcha statuslar</option>
+                </select>
+            </th>
+            <th col-index = 4>
+                <select class="table-filter form-select" onchange="filter_rows()">
+                    <option value="all">Barcha to'lovlar</option>
+                </select>
+            </th>
+            <th>Telefon raqam</th>
+            <th>Davomat</th>
+    
+            
+        </thead>
+
+        <tbody class="p-4">
+           
+            <tr>
+                <td> <a href="#" ></a></td>   
+                <td class="text-center"><span class="badge bg-info status-span"></span></td>
+                
+           
+                <!-- <td class="text-center text-success"><span class="badge bg-success status-span"><i class="bi bi-check-circle-fill me-1"></i>Faol</span></td> -->
+                <td class="text-center text-success"><span class="badge bg-success status-span"> faol</span></td>
+               
+                <td class=" text-center text-danger"><span class="badge bg-danger status-span">faol emas</span></td>
+            
+                <td class="text-center text-warning"><span class="badge bg-warning status-span">pauza</span></td>
+              
+                
+
+                <td
+                class=" text-center text-success"><span class="badge bg-success status-span">To'langan</span>
+            
+        <span class="badge bg-danger status-span">To'lanmagan</span>
+               
+                </td>
+
+                <td class="text-center"></td>
+                <td class="att_td ">  
+                    <label class="switch ">
+                        
+                       
+                            
+                            <input data-id="" checked="true" type="checkbox" class="default davomat">
+                            <span class="slider round"></span>
+                       
+                            <input data-id="" type="checkbox" class="default davomat">
+                            <span class="slider round"></span>
+                      
+                            
+                    </label>
+                </td>
+                <!-- <td>Site 1</td> -->
+            </tr>
+
+            
+
+        </tbody>
+    </table>
+
+    <style>
+        .status-span{
+            width: 45%;
+            font-size: 12px;
+        }
+        tbody tr:hover{
+            background:rgb(233, 227, 227);
+        }
+        td a{
+            color: rgba(143, 23, 223, 0.998);
+            font-size: 16px;
+        }
+        td a:hover{
+            color: black;
+        }
+        .switch {
+            float: left;
+            position: relative;
+            display: inline-block;
+            width:  40px;
+            height: 24px;
+        }
+        
+        .switch input {display:none;}
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgb(199, 31, 31);
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 0px;
+            bottom: 1px;
+            background-color: rgb(255, 255, 255);
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        input.default:checked + .slider {
+            background-color: rgb(0, 255, 13);
+        }
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        
+        input:checked + .slider:before {
+            -webkit-transform: translateX(18px);
+            -ms-transform: translateX(18px);
+            transform: translateX(18px);
+        }
+        
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 30px;
+        }
+        .slider.round:before {
+          
+            border-radius: 50%;
+        }
+       
+        </style>
+
+  
+    <script src="assets/example/filter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    
+    <script>
+        window.onload = () => {
+        };
+
+    getUniqueValuesFromColumn()
+
+    function getUniqueValuesFromColumn() {
+    var unique_col_values_dict = {}
+
+    allFilters = document.querySelectorAll(".table-filter")
+    allFilters.forEach((filter_i) => {
+        col_index = filter_i.parentElement.getAttribute("col-index");
+        // alert(col_index) 
+        const rows = document.querySelectorAll("#emp-table > tbody > tr")
+        rows.forEach((row) => {
+            cell_value = row.querySelector("td:nth-child("+col_index+")").innerHTML;
+            // if the col index is already present in the dict
+            if (col_index in unique_col_values_dict) {
+
+                // if the cell value is already present in the array
+                if (unique_col_values_dict[col_index].includes(cell_value)) {
+                    // alert(cell_value + " is already present in the array : " + unique_col_values_dict[col_index])
+
+                } else {
+                    unique_col_values_dict[col_index].push(cell_value)
+                    // alert("Array after adding the cell value : " + unique_col_values_dict[col_index])
+
+                }
+
+
+            } else {
+                unique_col_values_dict[col_index] = new Array(cell_value)
+            }
+        });
+
+        
+    });
+    // for(i in unique_col_values_dict) {
+    //     alert("Column index : " + i + " has Unique values : \n" + unique_col_values_dict[i]);
+    // }
+        updateSelectOptions(unique_col_values_dict)
+
+
+};
+
+        function updateSelectOptions(unique_col_values_dict) {
+        allFilters = document.querySelectorAll(".table-filter")
+        allFilters.forEach((filter_i) => {
+            col_index = filter_i.parentElement.getAttribute('col-index')
+
+            unique_col_values_dict[col_index].forEach((i) => {
+
+                let b = new DOMParser().parseFromString(i,'text/xml');
+                b = b.firstChild.innerHTML;
+                
+                filter_i.innerHTML = filter_i.innerHTML + `\n<option value="${b}">${b}</option>`
+            });
+
+        });
+    };
+        
+        let $rows = $('#emp-table tr');
+        $('#search').keyup(function() { 
+            let val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+
+            
+
+            $rows.show().filter(function() {
+                let text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+                return !~text.indexOf(val);
+            }).hide();
+        });
+                
+        $(".davomat").on("change", function(){
+            $id = $(this).data("id")
+            $atr = $(this).prop("checked")
+            $.ajax({
+                url:`/add_day/${$id}`,
+                type:"GET",
+                data:{
+                    "day_result":$atr
+                },
+                success:function(response){
+                    
+                }
+            })
+        })
+
+       
+    </script>
+   
+
+
+   
+</div>
+</div>
+
+
+</div>
+
+
+</main>
+
+<footer id="footer" class="footer mt-5">
+    <div class="copyright">
+      &copy; Dastur <strong><span><a href="https://www.instagram.com/j.torajonov"> Techmasters Team</a></span></strong>.tomonidan yaratildi
+    </div>
+   
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.min.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  
+
+  <script>
+
+  </script>
+  <script>
+    $('ul.messages-attendance').hide()
+
+
+    const spinner = document.querySelector(".load-spinner");
+    window.addEventListener('load', () => {
+      spinner.style.opacity = '0';
+      
+      setTimeout(() => {
+        spinner.style.display = 'none';
+      }, 200)
+
+    });
+
+    
+    var barcode = '';
+    var interval;
+    document.addEventListener('keydown', function(evt) {
+        
+        if (interval)
+        clearInterval(interval);
+        
+        if (evt.code == 'Enter') {
+            if (barcode)
+                handleBarcode(barcode);
+            barcode = '';
+            return;
+        }
+        
+        if (evt.key != 'Shift')
+            barcode += evt.key;
+        interval = setInterval (() => barcode = '', 20);
+
+    });
+
+    function handleBarcode(scanned_barcode) {
+        var client_id = scanned_barcode
+        $.ajax({
+          url: `/client_barcode_came/${scanned_barcode}`,
+          type: "GET",
+          data: {},
+          success: function(response){
+            $('ul.messages-attendance').show()
+            $('span.message-barcode').html(response['status'])
+          }
+        })
+    }
+  </script>
+  
+  
+
+</body>
+
+</html>

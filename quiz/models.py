@@ -9,6 +9,15 @@ VARIANT = (
     ('c','c'),
 )
 
+# class Profile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+#     avatar = models.ImageField(default='default.jpg', upload_to='profile_images')
+#     bio = models.TextField()
+
+#     def __str__(self):
+#         return self.user.username
+
 class Category(models.Model):
     title = models.CharField(max_length=400)
     body = models.TextField()
@@ -21,7 +30,8 @@ class Quetions(models.Model):
     body = models.TextField()
     duraction_time =models.IntegerField(default=0)
     date = models.DateField( auto_now_add=True)
-    is_edit = models.ManyToManyField(User, related_name='edit_sers')
+    is_edit = models.ManyToManyField(User, related_name='edit_sers',blank=True)
+    using_users = models.ManyToManyField(User, related_name='using_users',blank=True)
     random_url = models.UUIDField(default=uuid.uuid4)
     # is_show = models.BooleanField()
 
@@ -30,6 +40,7 @@ class Result(models.Model):
     quiz = models.ForeignKey(Quetions,on_delete=models.CASCADE , related_name='result')
     true =models.IntegerField(default=0)
     false =models.IntegerField(default=0)
+    using_count =models.IntegerField(default=0)
     time = models.CharField(max_length=400)
 
 

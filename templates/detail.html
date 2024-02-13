@@ -1,17 +1,99 @@
-<!-- {{data}} -->
+
+{% if is_have == 'bor' %}
+  <center>
+    <h2>Siz bu testni ishlagansiz </h2>
+  </center>
+
+
+<center>
+  <canvas id="chartId" aria-label="chart" height="350" width="580"></canvas>
+</center>
+
+<!-- {{id.using_users.all}} -->
+{% for x in id.using_users.all %}
+  {{x}}
+{% endfor %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
+<script>
+   var chrt = document.getElementById("chartId").getContext("2d");
+   var chartId = new Chart(chrt, {
+      type: 'pie',
+      data: {
+         labels: ["To'gri javob", "Noto'gri javob", "Ishlanmagan savollar", ],
+         datasets: [{
+            // label: "online tutorial subjects",
+            data: ['{{is_bor.true}}', '{{is_bor.false}}', Number('{{is_bor.using_count}}') - ( Number('{{is_bor.false}}') + Number( '{{is_bor.true}}') )],
+            backgroundColor: [ 'lightgreen', 'red', 'lightblue'],
+            hoverOffset: 5
+         }],
+      },
+      options: {
+         responsive: false,
+      },
+   });
+</script>
+
+
+{% else %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+  
+<center class="my-4">
+  <div class="d-flex justify-content-center gap-2">
+    <p id="time"  class="btn btn-primary">{{id.duraction_time}}</p> <p id="sekund" class="btn btn-primary">60</p>
+  </div>
+
+</center>
+
+
+<style>
+  .data{
+    display: flex ;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+</style>
+<div id="forms"> 
+
+
 
 {% for x in data %}
-  {{x.id}} <br>
-  {{x.true_ansver}} <br>
 
 
-<form action="{{x.random_url}}" method="GET">
+<form class="data"  action="{{x.random_url}}" id="dshdf" method="GET" >
+  
 
-<input name="value" value="a" type="radio">
-<input name="value" value="b" type="radio">
-<input name="value" value="c" type="radio">
-<input name="value" value="d" type="radio">
-<input type="submit" value="go">
+  <div class="col-12 d-flex justify-content-center">
+    <h3> {{x.title}}</h3>
+   
+  </div>
+
+<input id="a" style="display: none;" onchange="get_data( this.parentElement.getAttribute('action') , this )" name="value" value="a" type="radio">
+<input id="b" style="display: none;" onchange="get_data( this.parentElement.getAttribute('action') , this )" name="value" value="b" type="radio">
+<input id="c" style="display: none;"onchange="get_data( this.parentElement.getAttribute('action') , this )" name="value" value="c" type="radio">
+<input id="d" style="display: none;"onchange="get_data( this.parentElement.getAttribute('action') , this )" name="value" value="d" type="radio">
+
+
+<label class="btn btn-primary col-11 col-xl-5  text-start" for="a">A : {{x.a}}</label>
+<label class="btn btn-primary col-11 col-xl-5  text-start" for="b">B : {{x.b}}</label>
+<label class="btn btn-primary col-11 col-xl-5  text-start" for="c">C : {{x.c}}</label>
+<label class="btn btn-primary col-11 col-xl-5  text-start" for="d">D : {{x.d}}</label>
 
 
 </form>
@@ -19,29 +101,84 @@
 
 {% endfor %}
 
+</div>
 
-
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="/static/assets/js/jquery-3.3.1.min.js"></script>
 
 <script>
-let b = 0
 
 
-$.ajax({
-  url: 'http://127.0.0.1:8000/',
+let time = '{{id.duraction_time}}'
+let sekund =  60
+let true_ansver = 0
+let false_ansver = 0
+let using_count = 0
+
+
+for (const iterator of document.getElementById('forms').children) {
+  console.log(iterator.style.display = 'none');
+  
+}
+document.getElementById('forms').children[using_count].style.display = 'flex'
+
+
+let href = location.href
+
+function get_data (x, y ) {
+  using_count+= 1 
+setTimeout(() => {
+
+  document.getElementById('forms').children[using_count].style.display = 'flex'
+  document.getElementById('forms').children[using_count -1 ].innerHTML = ''
+  
+}, 1000)
+
+
+  $.ajax({
+  url: `${href}${x}`,
   type: "GET",
   dataType: "json",
   success: (data) => {
-    console.log(data)
+
+    document.getElementById(data['data']).labels[0].style.background = 'green'
+   if(data['data'] == y.value){
+    true_ansver += 1
+   }
+   else{
+    false_ansver+=1
+    y.labels[0].style.background = 'red'
+
+   }
+  
+if( '{{data|length}}' == using_count || time == 0 ){
+let url = location.origin+'/add_result'+`?true=${true_ansver}&false=${false_ansver}&time=${time}&quiz_id={{id.id}}&using_count=${using_count}`
+console.log(url);
+let req = new XMLHttpRequest( )
+req.open('GET', url)
+req.send()
+setTimeout(() => {
+  document.body.innerHTML = `<center>
+  <button onclick="location.reload()">Natijani korish</button>
+</center>`
+}, 1000);
+}
+
+  
   },
   error: (error) => {
 
   }
 });
 
-
+}
 
 
 </script>
+
+
+
+</body>
+</html>
+
+
+{% endif %}

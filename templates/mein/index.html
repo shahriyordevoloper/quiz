@@ -1,0 +1,427 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="content-type" content="text/plain; charset=UTF-8"/>
+
+  <title>Medical | Asosiy sahifa</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/static/assets/img/favicon.png" rel="icon">
+  <link href="/static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+
+
+  <!-- Template Main CSS File -->
+  <link href="/static/assets/css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+</head>
+
+
+<body>
+
+
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    
+    <div class="load-spinner">
+      <div class="p-1 spinner-grow text-danger" role="status">
+        <span class="visually-hidden">Kutilmoqda...</span>
+      </div>
+      <div class="p-3 spinner-grow text-warning " role="status">
+        <span class="visually-hidden ">Kutilmoqda...</span>
+      </div>
+      <div class="p-4 spinner-grow text-info" role="status">
+        <span class="visually-hidden">Kutilmoqda...</span>
+      </div>
+    </div>
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/" class="logo d-flex align-items-center">
+        <img src="/static/assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">Medical</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+    <div class="container">
+      <div class="row" style="float: right;">
+        <div class="col">
+          <form action="" method="post">
+           
+            <a type="button" class="btn btn-outline-danger" href="#">Chiqish</a>
+            
+        </form>
+        </div>
+      </div>
+    </div>
+  </header><!-- End Header -->
+  
+
+</ul>
+
+  <style>
+    #form_update span{
+display: flex;
+flex-direction: column;
+padding-bottom: 20px;
+    }
+    #form_update span label{
+      line-height: 0;
+      padding-bottom: 8px;
+    }
+     .msg{
+        position: fixed;
+        top: 80px;
+        right: 0;
+        width: 30%;
+        animation: run 1s linear ;
+        z-index: 100;
+      }
+      @keyframes run {
+      from{ 
+          transform: translateX(500px);   
+      }
+      to{
+          transform: translateX(-8px);   
+      }
+}
+    .nav-item:hover a{
+      transform: scale(1.2);
+    }
+    .nav-item:hover i{
+      margin-left: 20px;
+
+    }
+    .load-spinner{
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;      
+    }
+    
+  </style>
+  
+
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed " href="">
+          <i class="bi bi-grid"></i>
+          <span>Asosiy sahifa </span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="">
+          <i class="bi bi-person-plus-fill"></i>
+          <span>Ro'yhatga Olish </span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="">
+          <i class="bi bi-people-fill"></i>
+          <span>Umumiy Ro'yxat</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="">
+          <i class="bi bi-person-dash"></i>
+          <span>Talvasa xurujli bemorlar</span>
+        </a>
+      </li>
+     
+        
+        </ul>
+      </li><!-- End Forms Nav -->
+
+      <!-- End Tables Nav -->
+
+
+      <!-- End Blank Page Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Asosiy sahifa</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Asosiy sahifa</a></li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <div class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-12">
+              <div class="row">
+
+<div class="col-lg-3 col-sm-6">
+  <div class="card info-card sales-card">
+
+    <div class="card-body">
+      <h5 class="card-title">Bemorlar soni </h5>
+
+      <div class="d-flex align-items-center">
+        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+          <i class="bi bi-question-circle-fill  "></i>
+        </div>
+        <div class="ps-3">
+          <h6 id="count_all" >5 ta</h6>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="col-lg-3 col-sm-6">
+  <div class="card info-card sales-card">
+
+    <div class="card-body">
+      <h5 class="card-title">Bemorlar soni </h5>
+
+      <div class="d-flex align-items-center">
+        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+          <i class="bi bi-question-circle-fill  "></i>
+        </div>
+        <div class="ps-3">
+          <h6 id="count_all" >5 ta</h6>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="col-lg-3 col-sm-6">
+  <div class="card info-card sales-card">
+
+    <div class="card-body">
+      <h5 class="card-title">Bemorlar soni </h5>
+
+      <div class="d-flex align-items-center">
+        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+          <i class="bi bi-question-circle-fill  "></i>
+        </div>
+        <div class="ps-3">
+          <h6 id="count_all" >5 ta</h6>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="col-lg-3 col-sm-6">
+  <div class="card info-card sales-card">
+
+    <div class="card-body">
+      <h5 class="card-title">Bemorlar soni </h5>
+
+      <div class="d-flex align-items-center">
+        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+          <i class="bi bi-question-circle-fill  "></i>
+        </div>
+        <div class="ps-3">
+          <h6 id="count_all" >5 ta</h6>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+                
+              </div>
+          </div>
+      </div> 
+
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;" class="section dashboard">
+
+
+
+      <div style="width: 300px !important; border-radius: 10px; display: flex; align-items: center;" class="card info-card sales-card text-center ">
+
+    
+          
+                <div style="transform: rotate(45deg); font-size: 10vh; color: red;">&times;</div>
+              
+ 
+ 
+    
+      </div>
+
+
+      <div style="width: 300px !important; border-radius: 10px;" class="card info-card sales-card text-center ">
+
+        <div class="card-body">
+          <h5 class="card-title">Bemorlar soni </h5>
+  
+            <div class="ps-3">
+              <h6 id="count_all" >5 ta</h6>
+    
+            </div>
+         
+        </div>
+    
+      </div>
+      <div style="width: 300px !important; border-radius: 10px;" class="card info-card sales-card text-center ">
+
+        <div class="card-body">
+          <h5 class="card-title">Bemorlar soni </h5>
+  
+            <div class="ps-3">
+              <h6 id="count_all" >5 ta</h6>
+    
+            </div>
+         
+        </div>
+    
+      </div>
+      <div style="width: 300px !important; border-radius: 10px;" class="card info-card sales-card text-center ">
+
+        <div class="card-body">
+          <h5 class="card-title">Bemorlar soni </h5>
+  
+            <div class="ps-3">
+              <h6 id="count_all" >5 ta</h6>
+    
+            </div>
+         
+        </div>
+    
+      </div>
+      <div style="width: 300px !important; border-radius: 10px;" class="card info-card sales-card text-center ">
+
+        <div class="card-body">
+          <h5 class="card-title">Bemorlar soni </h5>
+  
+            <div class="ps-3">
+              <h6 id="count_all" >5 ta</h6>
+    
+            </div>
+         
+        </div>
+    
+      </div>
+    </div>
+
+  </main><!-- End #main -->
+
+
+  <footer id="footer" class="footer mt-5">
+    <div class="copyright">
+      &copy; Dastur <strong><span><a href="https://www.instagram.com/j.torajonov"> Techmasters Team</a></span></strong>.tomonidan yaratildi
+    </div>
+   
+  </footer>
+
+
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="/static/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="/static/assets/js/main.js"></script>
+  
+
+  
+
+
+  <script>
+    $('ul.messages-attendance').hide()
+
+
+    const spinner = document.querySelector(".load-spinner");
+    window.addEventListener('load', () => {
+      spinner.style.opacity = '0';
+      
+      setTimeout(() => {
+        spinner.style.display = 'none';
+      }, 200)
+
+    });
+
+    
+    var barcode = '';
+    var interval;
+    document.addEventListener('keydown', function(evt) {
+        
+        if (interval)
+        clearInterval(interval);
+        
+        if (evt.code == 'Enter') {
+            if (barcode)
+                handleBarcode(barcode);
+            barcode = '';
+            return;
+        }
+        
+        if (evt.key != 'Shift')
+            barcode += evt.key;
+        interval = setInterval (() => barcode = '', 20);
+
+    });
+
+    function handleBarcode(scanned_barcode) {
+        var client_id = scanned_barcode
+        $.ajax({
+          url: `/client_barcode_came/${scanned_barcode}`,
+          type: "GET",
+          data: {},
+          success: function(response){
+            $('ul.messages-attendance').show()
+            $('span.message-barcode').html(response['status'])
+          }
+        })
+    }
+  </script>
+  
+  
+
+</body>
+
+</html>
