@@ -1,305 +1,320 @@
-{% extends 'wrapper.html' %}
-{% block content %}
 
-  <main id="main" class="main">
+{% if is_have == 'bor' %}
+<title></title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-  
-    
-    
-    <div class="row">
-      <div class="col-md-6 p-1">
-        <div class="row">
-         
-          <div class="col-lg-12 ">
-            <form action="{% url 'main:detail' client.id %}" method="post">
-            {% csrf_token %}
 
-            <div class="card ">
-              <div class="card-body">
-                <div class="row mt-3">
-                  <div class="col-sm-3">
-                    <h5 class="mt-2">Ism Familya</h5>
-                  </div>
-                  <div class="col-sm-9">
-                    <input type="text"  required name="name" class="form-control" value="{{ client.name }}" placeholder="Ism" >
-                  </div>
-                </div>
-                
-                <div class="row mt-4">
-                  <div class="col-sm-3">
-                    <h5 class="mt-2">Telefon</h5>
-                  </div>
-                  <div class="col-sm-9">
-                    <input type="text" maxlength="13" minlength="9" required name="phone" class="form-control" value="{{ client.phone }}" placeholder="Telefon raqam" >
-                  </div>
-                </div>
+<center  class="my-5">
+  <div class="d-flex align-items-start justify-content-center">
 
-               
-                <div class="row mt-4">
-                  <div class="col-sm-3">
-                    <h5 class="mt-2">Status</h5>
-                  </div>
-                  <div class="col-sm-9">
-                    <select class="form-select" name="status" aria-label="State">
-                      {% if client.status == "ACTIVE" %}
-                      <option selected value="ACTIVE">Faol</option>
-                      <option  value="INACTIVE">Faol emas</option>
-                      <option value="PAUSED">Pauzada</option>
-                      {% elif client.status == "INACTIVE" %}
-                      <option selected value="INACTIVE">Faol emas</option>
-                      <option value="ACTIVE">Faol</option>
-                      <option value="PAUSED">Pauzada</option>
-                      {% else %}
-                      <option value="ACTIVE">Faol</option>
-                      <option selected value="PAUSED">Pauzada</option>
-                      <option  value="INACTIVE">Faol emas</option>
-                      {% endif %}
 
-                    </select>
-                  </div>
-                </div>
-               
-                <div class="row mt-4">
-                  <div class="col-sm-3">
-                    <h5 class="mt-3">Tarif</h5>
-                  </div>
-                  <div class="col-sm-9">
-                    <select class="form-select" name="tarif" aria-label="State">
-                      {% for t in tarifs %}
-                      {% if t == client.coming_type %}
-                      <option selected value="{{ t }}">{{ t }}</option>
-                      {% else %}
-                      <option  value="{{ t }}">{{ t }}</option>
-                      {% endif %}
-                      {% endfor %}
-                    </select>
-                  </div>
-                  
-                </div>
-                <div class="row">
-                  <div class="col-sm-3">
-                      <h5 class="mt-3">Barcode: </h5>
-                  </div>
-                  <div class="col-sm-9">
-                    <svg id="barcode" class="mt-2"></svg>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-3">
-                      <h5 class="mt-3">Balans: </h5>
-                  </div>
-                  <div class="col-sm-9">
-                    <h5 class="mt-3">{{ client.balance }} so'm</h5>
-                  </div>
-                </div>
-                
-                <hr>
-                
-                <button type="submit" class="btn btn-primary">O'zgartirish</button>
-                
-              </form>
-              <div class="row">
-                <div class="col-sm-5">
-                  <h5 class="card-title text-right">Mijozni ro'yxatdan </h5>
-                </div>
-                <div class="col-sm-7" style="margin-left: -50px;">
-                  <form action=""  method="post">{% csrf_token %}
-                    <div class="mt-3">
-                      <input type="text" name="delete" value="delete" style="display:none" >
-                      
-                      <button type="submit"  class="badge bg-danger p-2" style="width: 40%; float: left; border:none;">O'chirish</butt>
-                    </div>
-                  </form>
-                </div>
-                
-              </div>
-              </div>
-            </div>
+  <canvas id="chartId" aria-label="chart" style="box-sizing: content-box !important;"></canvas>
+
+
+  <div  class="d-flex flex-column align-items-start">
+    <h2>    Sizning natijangiz <span class="text-success">{{is_bor.count_score}}%  </span>
+
+    </h2>
+    <p>Siz {{is_bor.time}} soniyada ishladingiz  
+
+
+    </p>
+
+    <div>
+
+
+
+<style>
+  .my-custom-scrollbar {
+position: relative;
+height: 200px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
+</style>
+
+
+<div class="table-wrapper-scroll-y my-custom-scrollbar" >
+      <table  class="table">
           
-
-         </div>
-      </div>
-      </div>
-
-   <div class="card col-md-6 p-4" style="overflow-y: scroll; height: 350px;">
-    {% for month in months %}
-    <div class="month">
-        <div class="title form-inline">
-            <h4 class="pagetitle">{{month.created | date:"m/Y"}} <span class="fs-6">{{month.came}}/{{month.coming_days}} </span>
-                
-                {% if month.payed == True %}
-                    <button class="btn btn-primary btn-sm btn-disaled">To'langan</button>
-                    {% else %}
-                    <button class="btn btn-danger btn-sm">To'lanmagan</button>
-                {% endif %}
-            </h4>
-        </div>
-        <!-- <div class="row "> -->
-           <!-- <div class="col-md-6"> -->
-             <div class="row mt-4">
-            {% for day in month.days.all %}
-          
-            {% if day.came == True %}
-            <div class="col-md-2 col-sm-4">
-                <div class="card bg-success text-light" style="width:70px; height: 70px;" >
-                    <div class="text-center mt-2 text-light">
-                      {{day.date|date:"d"}}<br>
-                        {{day.date|date:"D"}}
-                    </div>
-                </div>
-            </div>
-
-            {% else %}
-            <div class="col-md-2 col-sm-4">
-                <div class="card bg-danger text-light " style="width:70px; height: 70px;" >
-                    <div class="text-center mt-2 text-light">
-                      {{day.date|date:"d"}}<br>
-                        {{day.date|date:"D"}}
-                    </div>
-                </div>
-            </div>
-
-            {% endif %}
-            
-
-            {% endfor %}
-             </div>
-            
-        
-    </div>
-
-    <hr>
-    {% endfor %}
-   </div>
-   
-   <!-- <div class="row mt-3"> -->
-     <!-- <hr> -->
-     <div class="col-md-6 card  p-3">
-       
-      <form class="payment"> 
-        {% csrf_token %}
-           <h3 class="text-dark">To'lov qo'shish</h3>
-               <div class="form-floating p-1">
-                 <input type="number" name="summa" class="form-control" id="payment" placeholder="Summa">
-                 <label for="payment">Summa</label>
-               </div>
-  
-               <div class="form-floating mb-3 mt-3 p-1">
-                 <select class="form-select month_payment" name="month" id="month" aria-label="State">
-                   <option value="0" >Oyni tanlang</option>
-                   {% for t in months %}
-                    {% if t.payed == True %}
-                      {% else %}
-                      <option value="{{t.id}}" >{{ t.created | date:"F (Y)" }}</option>
-                    {% endif %}
-                   {% endfor %}
-                 </select>
-                 <label for="month">To'lash kerak bo'lgan oylar</label>
-               </div>
- 
-              <div class="text-left">
-                <button type="button" onclick="sendData()" class="btn btn-primary">Qo'shish</button>
-              </div>
-  
-      </form><!-- End floating Labels Form -->
-      <div class="status">
-        
-      </div>
-     </div>
      
-    <div class="card col-md-6 p-3" style="overflow-y: scroll; height: 300px;">  
-      <!-- <h3 class="text-success">Umumiy to'lovlar</h3> -->
-      <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Oy nomi</th>
-            <th scope="col">To'langan summa</th>
-            <th scope="col">Chegirma</th>
-            <th scope="col">To'langan sana</th>
+            <th scope="col">Rating</th>
+            <th scope="col">User</th>
+            <th scope="col">Score</th>
+            <th scope="col">Time</th>
           </tr>
         </thead>
-        <tbody class="text-center">
-          {% for m in months %}
-          
-          <tr>
-            <th scope="row">{{forloop.counter}}</th>
-            <td>{{ m.created | date:"F"}} </td>
-            <td>
-              {% for p in m.payments.all %}
-              <span class="badge bg-success "> {{ p.money }}</span> so'm <br> 
-              {% endfor %}
-            </td>
-            <td>
-              {% for p in m.payments.all %}
-            <span class="badge bg-warning"> {{ p.discount }}</span> so'm <br> 
-              {% endfor %}
-            </td>
-            <td>
-              {% for p in m.payments.all %}
-              {{ p.date | date:"d.m.Y" }}<br>
-              {% endfor %}
-            </td>
+        <tbody  class="table-bordered table-striped mb-0" >
+          {% for x in   filter %}
+          {% if x.0.user == request.user %}
+          <tr class="table-Success">
+            <th scope="row">{{x.1}}</th>
+            <td >{{x.0.user}}</td>
+            <td>{{x.0.count_score}}</td>
+            <td>{{x.0.time}}</td>
+
           </tr>
-          {% endfor %}
+          {% else %}
+          <tr>
+            <th scope="row">{{x.1}}</th>
+            <td >{{x.0.user}}</td>
+            <td>{{x.0.count_score}}</td>
+            <td>{{x.0.time}}</td>
+          </tr>
+
+          {% endif %}
           
+          {% endfor %}
         </tbody>
+       
+      
       </table>
+  </div>
+
+
     </div>
+
+  
+
+
+
+    
+  </div>
+
+
+</div>
+</center>
+
+
+<!-- {{id.using_users.all}} -->
+{% for x in id.using_users.all %}
+  {{x}}
+{% endfor %}
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+   var chrt = document.getElementById("chartId").getContext("2d");
+   var chartId = new Chart(chrt, {
+      type: 'pie',
+      data: {
+         labels: ["To'gri javob", "Noto'gri javob", "Ishlanmagan savollar", ],
+         datasets: [{
+            // label: "online tutorial subjects",
+            data: ['{{is_bor.true}}', '{{is_bor.false}}', Number('{{is_bor.quiz.quetions_list.all|length}}') - Number('{{is_bor.using_count}}')   ],
+            backgroundColor: [ 'lightgreen', 'red', 'lightblue'],
+            hoverOffset: 5
+         }],
+      },
+      options: {
+         responsive: false,
+      },
+   });
+</script>
+
+
+
+{% else %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+      .data{
+    display: flex ;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  </style>
+</head>
+
+<body>
+  
+<center class="my-4">
+  <div class="d-flex justify-content-center gap-2">
+    <p id="time"  class="btn btn-primary">{{id.duraction_time}}</p> <p id="sekund" class="btn btn-primary">60</p>
+  </div>
+
+</center>
+
+
+<div id="forms"> 
+
+
+
+{% for x in data %}
+
+<form class="data"  action="{{x.random_url}}" id="dshdf" method="GET" >
+  
+
+  <div class="col-12 d-flex justify-content-center">
+    <h3> {{x.title}}</h3>
+   
+  </div>
+
+<input id="a" style="display: none;" onchange="get_data( this.parentElement.getAttribute('action') , this )" name="value" value="a" type="radio">
+<input id="b" style="display: none;" onchange="get_data( this.parentElement.getAttribute('action') , this )" name="value" value="b" type="radio">
+<input id="c" style="display: none;"onchange="get_data( this.parentElement.getAttribute('action') , this )" name="value" value="c" type="radio">
+<input id="d" style="display: none;"onchange="get_data( this.parentElement.getAttribute('action') , this )" name="value" value="d" type="radio">
+
+
+<label class="btn btn-primary col-11 col-xl-5  text-start" for="a">A : {{x.a}}</label>
+<label class="btn btn-primary col-11 col-xl-5  text-start" for="b">B : {{x.b}}</label>
+<label class="btn btn-primary col-11 col-xl-5  text-start" for="c">C : {{x.c}}</label>
+<label class="btn btn-primary col-11 col-xl-5  text-start" for="d">D : {{x.d}}</label>
+
+
+</form>
+
+
+{% endfor %}
+
 </div>
 
-        
+<script src="/static/assets/js/jquery-3.3.1.min.js"></script>
+
+<script>
 
 
-  </main><!-- End #main -->
+let time = '{{id.duraction_time}}' 
+let sekund =  60
+let true_ansver = 0
+let false_ansver = 0
+let using_count =  0
+let duraction_time =  0
+setInterval(() => {
+  duraction_time+=1
+}, 1000);
 
-<script src="../static/assets/js/jquery-3.6.1.min.js"></script>
-<script src="../static/assets/js/barcode-3.11.5.js"></script>
 
-  <script>
-    JsBarcode("#barcode", '{{ client.uid }}', {
-      height: 40,
-    });
+for (const iterator of document.getElementById('forms').children) {
+  console.log(iterator.style.display = 'none');
+  
+}
+document.getElementById('forms').children[using_count].style.display = 'flex'
 
-    $('.month_payment').on('change', function(){
-      let id = $(this).val()
-      $.ajax({
-        url:'/month_payment/',
-        type:'get',
-        data:{
-          'id':id
-        },
-        success:function(response){
-          $('#payment').val(response['payment'])
-        }
-      })
-    })
 
-    function sendData(){
-      var payment = $('#payment').val()
-      var month_id = $('#month').val()
-      var csrf = $('input[name="csrfmiddlewaretoken"]').val()
-      $.ajax({
-        url:'/detail-payment/',
-        type:'post',
-        data: {
-          'month_id':month_id,
-          'payment':payment,
-          'csrfmiddlewaretoken':csrf
-        },
-        success: function(response){
-          if(response['status'] === 'ok'){
-            $('form.payment').hide()
-            $('div.status').html(`
-            <div class="alert alert-info alert-dismissible fade show" role="alert">
-              To'lov amalga oshdi.
-              <a class="btn-close" href="/detail/{{client.id}}"></a>
-            </div>
-            `)
-          }
-        }
-      })
-    }
-  </script>
+let href = location.href
 
-{% endblock content %}
+function get_data (x, y ) {
+using_count+=1
+setTimeout(() => {
+
+  document.getElementById('forms').children[using_count].style.display = 'flex'
+  document.getElementById('forms').children[using_count -1 ].innerHTML = ''
+  
+}, 1000)
+
+
+  $.ajax({
+  url: `${href}${x}`,
+  type: "GET",
+  dataType: "json",
+  success: (data) => {
+
+    document.getElementById(data['data']).labels[0].style.background = 'green'
+   if(data['data'] == y.value){
+    true_ansver += 1
+   }
+   else{
+    false_ansver+=1
+    y.labels[0].style.background = 'red'
+
+   }
+  
+if( '{{data|length}}' == using_count ){
+let url = location.origin+'/add_result'+`?true=${true_ansver}&false=${false_ansver}&time=${duraction_time}&quiz_id={{id.id}}&using_count=${true_ansver+false_ansver}`
+console.log(url);
+let req = new XMLHttpRequest( )
+req.open('GET', url)
+req.send()
+setTimeout(() => {
+  document.body.innerHTML = `<center>
+  <button onclick="location.reload()">Natijani korish</button>
+</center>`
+}, 1000);
+
+
+
+}
+
+  
+  },
+  error: (error) => {
+
+  }
+});
+
+}
+
+
+let clear_time = setInterval((e) => {
+  
+  sekund-=1
+  document.getElementById('sekund').innerHTML = sekund
+  document.getElementById('time').innerHTML = time-1
+
+if(sekund == 0){
+    time-=1
+    sekund=60
+    document.getElementById('time').innerHTML = time
+
+  }
+  
+
+}, 1000);
+
+
+let inter = setInterval(() => {
+
+if( time == 0 ){
+clearInterval(clear_time)
+let url = location.origin+'/add_result'+`?true=${true_ansver}&false=${false_ansver}&time=${duraction_time}&quiz_id={{id.id}}&using_count=${true_ansver+false_ansver}`
+console.log(url);
+let req = new XMLHttpRequest( )
+req.open('GET', url)
+req.send()
+
+document.body.innerHTML = `<center>
+  <button onclick="location.reload()">Natijani korish</button>
+</center>`
+
+clearInterval(inter)
+
+
+}
+
+
+}, 100);
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
+
+
+{% endif %}

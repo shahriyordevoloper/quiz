@@ -18,9 +18,13 @@ VARIANT = (
 #     def __str__(self):
 #         return self.user.username
 
+
+
 class Category(models.Model):
     title = models.CharField(max_length=400)
     body = models.TextField()
+    def __str__ (self) :
+        return self.title
 
 
 class Quetions(models.Model):
@@ -33,7 +37,9 @@ class Quetions(models.Model):
     is_edit = models.ManyToManyField(User, related_name='edit_sers',blank=True)
     using_users = models.ManyToManyField(User, related_name='using_users',blank=True)
     random_url = models.UUIDField(default=uuid.uuid4)
-    # is_show = models.BooleanField()
+    is_score = models.IntegerField(default=0)
+    def __str__ (self) :
+        return self.title
 
 class Result(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -42,6 +48,19 @@ class Result(models.Model):
     false =models.IntegerField(default=0)
     using_count =models.IntegerField(default=0)
     time = models.CharField(max_length=400)
+    dates2 = models.DateField( auto_now_add=True)
+    is_status = models.BooleanField()
+    count_score = models.IntegerField(default=0)
+
+    def __str__ (self) :
+        return  str(self.quiz)
+
+class Chart(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    date= models.DateField( auto_now_add=True)
+
+    def __str__ (self) :
+        return str(self.user)
 
 
 
@@ -54,4 +73,5 @@ class Quetions_list(models.Model):
     c=models.CharField(max_length=400)
     true_ansver = models.CharField(choices=VARIANT, max_length=40)
     random_url = models.UUIDField(default=uuid.uuid4)
-
+    def __str__ (self) :
+        return self.title
